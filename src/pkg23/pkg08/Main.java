@@ -5,12 +5,16 @@ public class Main
 
     public static void main(String[] args) 
     {
-        int vetor[] = {2, 3, 4, 5};
+        int vetor[] = {4, 3, 5, 7, 7, 7, 3, 90, 34, 2};
 //        ordenador(vetor);
 //        for (int i = 0; i < vetor.length; i++) {
 //            System.out.println(vetor[i]+" ");
 //        }
-    System.out.println(buscaBinOrd(5, vetor));
+        bobbleSort(vetor);
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.print(vetor[i] + " - ");
+        }
+//    System.out.println(buscaBinOrd(5, vetor));
     }
 
     public static void ordenador(int vetor0[])
@@ -103,5 +107,23 @@ public class Main
             }
         }
         return -1;
+    }
+    
+     public static void bobbleSort(int vetor[]) {
+        int n = vetor.length;
+        boolean invertido;
+        do {
+            invertido = false;
+            for (int i = 1; i <= n - 1; i++) {
+                if (vetor[i - 1] > vetor[i]) {
+                    
+                    vetor[i] = vetor[i - 1] + vetor[i];
+                    vetor[i - 1] = vetor[i] - vetor[i - 1];
+                    vetor[i] = vetor[i] - vetor[i - 1];
+
+                    invertido = true;
+                }
+            }
+        } while (invertido == true);
     }
 }
